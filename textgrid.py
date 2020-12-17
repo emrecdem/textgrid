@@ -7,7 +7,7 @@ Entry = namedtuple("Entry", ["start",
                              "name",
                              "tier"])
 
-def read_textgrid(filename):
+def read_textgrid(filename, encoding=None):
     """
     Reads a TextGrid file into a dictionary object
     each dictionary has the following keys:
@@ -20,7 +20,7 @@ def read_textgrid(filename):
     but the value for "start" and "stop" are the same
     """
     if isinstance(filename, str):
-        with open(filename, "r") as f:
+        with open(filename, "r", encoding=encoding) as f:
             content = _read(f)
     elif hasattr(filename, "readlines"):
         content = _read(filename)
